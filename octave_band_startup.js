@@ -38,5 +38,5 @@ function calc_octaveband(input_array) {
 
 	}
 
-	return band_power;
+	return band_level_db;
 }

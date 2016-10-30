@@ -217,8 +217,8 @@ function draw_MyOwn() {
 	
 	//color
 	var gradient = drawContext.createRadialGradient(X_CENTER,Y_CENTER,10,X_CENTER,Y_CENTER,200);
-	gradient.addColorStop(0,(251,237,42));
-	gradient.addColorStop(1,(214,31,59));
+	gradient.addColorStop(0,"#FBED2A");
+	gradient.addColorStop(1,"#D61F3B");
 	
 	drawContext.fillStyle = "white";
 	drawContext.fill();

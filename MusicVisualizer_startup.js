@@ -62,6 +62,10 @@ window.onload=function(){
 	// create audio context
 	context = new AudioContext();
 	
+	//@@@@@try and delete
+	console.log(context.sampleRate);
+	
+	
 	// analyzer
     analyser = context.createAnalyser();
     analyser.fftSize = 2048;

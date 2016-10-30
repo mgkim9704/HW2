@@ -220,7 +220,8 @@ function draw_MyOwn() {
 	drawContext.closePath();
 	
 	//color
-	drawContext.fillStyle = "white"
+	drawContext.fillStyle = "white";
+	context.fill();
 
 	
 	

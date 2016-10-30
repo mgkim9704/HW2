@@ -220,7 +220,7 @@ function draw_MyOwn() {
 	gradient.addColorStop(0,"#FBED2A");
 	gradient.addColorStop(1,"#D61F3B");
 	
-	drawContext.fillStyle = "white";
+	drawContext.fillStyle = gradient;
 	drawContext.fill();
 
 	// 

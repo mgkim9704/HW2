@@ -210,6 +210,7 @@ function draw_MyOwn() {
 		}
 		else{
 			drawContext.lineTo(X_CENTER+prev_band_level[i]*Math.cos(Math.PI*(-1/2+i/5)),Y_CENTER+prev_band_level[i]*Math.sin(Math.PI*(-1/2+i/5)));
+		}
 	}
 
 	drawContext.closePath();

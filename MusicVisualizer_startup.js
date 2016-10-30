@@ -186,10 +186,11 @@ function draw_MyOwn() {
 	drawContext.fillRect(0, 0, WIDTH, HEIGHT);
 
 	
+	/////drawing figure
 	drawContext.beginPath();
 	for (var i=0; i<10; i++) {
 		
-		//get radius (for draw figure)
+		/////get radius (for draw figure)
 		var sound_level = (octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)*RADIUS;
 		var sound_level_env;
 
@@ -203,29 +204,20 @@ function draw_MyOwn() {
 			prev_band_level[i]=0.95*prev_band_level[i];
 			sound_level_env=prev_band_level[i];
 		}
-
+		
+		if(i==0){
+			drawContext.moveTo(X_CENTER+prev_band_level[0]*Math.cos(-Math.PI/2),Y_CENTER+prev_band_level[0]*Math.sin(-Math.PI/2));
+		}
+		else{
+			drawContext.lineTo(X_CENTER+prev_band_level[i]*Math.cos(Math.PI*(-1/2+i/5)),Y_CENTER+prev_band_level[i]*Math.sin(Math.PI*(-1/2+i/5)));
 	}
 
-	//drawing figure
-	drawContext.moveTo(prev_band_level[0]*Math.cos(-Math.PI/2),prev_band_level[0]*Math.sin(-Math.PI/2));
-	drawContext.lineTo(prev_band_level[1]*Math.cos(Math.PI*(-1/2+1/5)),prev_band_level[1]*Math.sin(Math.PI*(-1/2+1/5)));
-	drawContext.lineTo(prev_band_level[2]*Math.cos(Math.PI*(-1/2+2/5)),prev_band_level[2]*Math.sin(Math.PI*(-1/2+2/5)));
-	drawContext.lineTo(prev_band_level[3]*Math.cos(Math.PI*(-1/2+3/5)),prev_band_level[3]*Math.sin(Math.PI*(-1/2+3/5)));
-	drawContext.lineTo(prev_band_level[4]*Math.cos(Math.PI*(-1/2+4/5)),prev_band_level[4]*Math.sin(Math.PI*(-1/2+4/5)));
-	drawContext.lineTo(prev_band_level[5]*Math.cos(Math.PI*(-1/2+5/5)),prev_band_level[5]*Math.sin(Math.PI*(-1/2+5/5)));
-	drawContext.lineTo(prev_band_level[6]*Math.cos(Math.PI*(-1/2+6/5)),prev_band_level[6]*Math.sin(Math.PI*(-1/2+6/5)));
-	drawContext.lineTo(prev_band_level[7]*Math.cos(Math.PI*(-1/2+7/5)),prev_band_level[7]*Math.sin(Math.PI*(-1/2+7/5)));
-	drawContext.lineTo(prev_band_level[8]*Math.cos(Math.PI*(-1/2+8/5)),prev_band_level[8]*Math.sin(Math.PI*(-1/2+8/5)));
-	drawContext.lineTo(prev_band_level[9]*Math.cos(Math.PI*(-1/2+9/5)),prev_band_level[9]*Math.sin(Math.PI*(-1/2+9/5)));
 	drawContext.closePath();
 	
 	//color
 	drawContext.fillStyle = "white";
 	drawContext.fill();
 
-	
-	
-	
 	// 
 	// 
 	//

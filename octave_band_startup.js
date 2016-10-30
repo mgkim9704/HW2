@@ -36,5 +36,5 @@ function calc_octaveband(input_array) {
 
 	}
 
-	return fft_power;
+	return band_power;
 }

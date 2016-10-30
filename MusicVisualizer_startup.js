@@ -238,7 +238,7 @@ function draw_MyOwn() {
 	var value = 255;
 	var rgb = hsvToRgb(hue, saturation, value);
 	
-	gradient.addColorStop(0,"white");
+	gradient.addColorStop(0,"black");
 	gradient.addColorStop(1,'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')');
 	
 	drawContext.fillStyle = gradient;

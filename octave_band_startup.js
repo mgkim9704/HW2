@@ -17,7 +17,7 @@ function calc_octaveband(input_array) {
 		//
 		// fill out here with your code
 		for(var j=0;(23.4375*j)<upper_freqs[i];j++) {
-			if (lower_freqs[i]<=(23.4375*j))
+			if (lower_freqs[i]>=(23.4375*j))
 				band_power[i]=band_power[i]+fft_power[j];
 		}
 		//

@@ -107,6 +107,10 @@ function draw_octaveband() {
 	var loudness = octaveband_level_db[0];
 	vis_value.innerHTML = '32Hz-Band Level (dB): ' + loudness + ' dB'
 
+	//@@@
+	console.log(octaveband_level_db);
+	
+	
 	// 2d canvas context
 	var drawContext = vis_view.getContext('2d');
 	
@@ -135,7 +139,7 @@ function draw_octaveband() {
 			prev_band_level[i]=0.95*prev_band_level[i];
 			sound_level_env=prev_band_level[i];
 		}
-		console.log(sound_level);
+		
 		// 
 		// note that you can use "prev_band_level" array defined above to store the decaying level
 		// 

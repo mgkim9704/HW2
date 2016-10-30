@@ -197,7 +197,7 @@ function draw_MyOwn() {
 	for (var i=0; i<10; i++) {
 		
 		/////find max value
-		if((octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)>find_max){
+		if((octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)>find_max_value){
 			find_max_value=(octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL);
 			max_band=i;
 		}

@@ -22,6 +22,7 @@ function calc_octaveband(input_array) {
 				band_power[i]=band_power[i]+fft_power[j];
 			}
 		}
+		band_power[i]=band_power[i]/j;
 		//
 		//
 	}

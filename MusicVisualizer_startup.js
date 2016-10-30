@@ -170,8 +170,8 @@ function draw_MyOwn() {
 	var X_CENTER = WIDTH/2;
 	var Y_CENTER = HEIGHT/2;
 	var RADIUS = 240;	
-	var find_min_value = 0;
-	var min_band=0;
+	var max_variation = 0;
+	var max_variation_band=0;
 	
 	// get samples 
 	var data_array = new Float32Array(analyser.frequencyBinCount);
@@ -195,19 +195,18 @@ function draw_MyOwn() {
 	/////drawing figure
 	drawContext.beginPath();
 	for (var i=0; i<10; i++) {
-		
-		/////find min value
-		if((octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)>find_min_value){
-			find_min_value=(octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL);
-			min_band=i;
-		}
-		
+			
 		
 		/////get radius (for draw figure)
 		var sound_level = (octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)*RADIUS;
 		var sound_level_env;
 
-
+		/////find max_variation
+		if((sound_level-prev_band_level[i])>max_variation){
+			max_variation=(octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL);
+			max_variation_band=i;
+		}
+		
 		///// asymmetric envelope detector
 		if(sound_level>=prev_band_level[i]){
 			prev_band_level[i]=sound_level;
@@ -229,14 +228,17 @@ function draw_MyOwn() {
 	drawContext.closePath();
 	
 	/////color
-	var gradient = drawContext.createRadialGradient(X_CENTER,Y_CENTER,50*find_min_value,X_CENTER,Y_CENTER,200);
+	var max_variation_level=max_variation/RADIUS*100;
+	var Gradient_Center_X=X_CENTER+prev_band_level[max_variation_band]*Math.cos(Math.PI*(-1/2+max_variation_band/5));
+	var Gradient_Center_Y=Y_CENTER+prev_band_level[max_variation_band]*Math.sin(Math.PI*(-1/2+max_variation_band/5));
+	var gradient = drawContext.createRadialGradient(Gradient_Center_X,Gradient_Center_Y,50*max_variation_level,X_CENTER,Y_CENTER,HEIGHT/2);
 	
-	var hue = Math.floor(255/9*min_band);
+	var hue = Math.floor(255/9*max_variation_band);
 	var saturation = 255;
 	var value = 255;
 	var rgb = hsvToRgb(hue, saturation, value);
 	
-	gradient.addColorStop(0,"black");
+	gradient.addColorStop(0,"white");
 	gradient.addColorStop(1,'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')');
 	
 	drawContext.fillStyle = gradient;

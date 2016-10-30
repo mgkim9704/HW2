@@ -204,15 +204,19 @@ function draw_MyOwn() {
 			sound_level_env=prev_band_level[i];
 		}
 
-		
-		//point for drawing figure
-		if(i==0){
-			drawContext.moveTo(RADIUS*Math.cos(-Math.PI/2),RADIUS*Math.sin(-Math.PI/2));
-		}
-		else {
-			drawContext.lineTo(RADIUS*Math.cos(Math.PI*(-1/2+i/5)),RADIUS*Math.sin(Math.PI*(-1/2+i/5)));
-		}
 	}
+
+	//drawing figure
+	drawContext.moveTo(prev_band_level[0]*Math.cos(-Math.PI/2),prev_band_level[0]*Math.sin(-Math.PI/2));
+	drawContext.lineTo(prev_band_level[1]*Math.cos(Math.PI*(-1/2+1/5)),prev_band_level[1]*Math.sin(Math.PI*(-1/2+1/5)));
+	drawContext.lineTo(prev_band_level[2]*Math.cos(Math.PI*(-1/2+2/5)),prev_band_level[2]*Math.sin(Math.PI*(-1/2+2/5)));
+	drawContext.lineTo(prev_band_level[3]*Math.cos(Math.PI*(-1/2+3/5)),prev_band_level[3]*Math.sin(Math.PI*(-1/2+3/5)));
+	drawContext.lineTo(prev_band_level[4]*Math.cos(Math.PI*(-1/2+4/5)),prev_band_level[4]*Math.sin(Math.PI*(-1/2+4/5)));
+	drawContext.lineTo(prev_band_level[5]*Math.cos(Math.PI*(-1/2+5/5)),prev_band_level[5]*Math.sin(Math.PI*(-1/2+5/5)));
+	drawContext.lineTo(prev_band_level[6]*Math.cos(Math.PI*(-1/2+6/5)),prev_band_level[6]*Math.sin(Math.PI*(-1/2+6/5)));
+	drawContext.lineTo(prev_band_level[7]*Math.cos(Math.PI*(-1/2+7/5)),prev_band_level[7]*Math.sin(Math.PI*(-1/2+7/5)));
+	drawContext.lineTo(prev_band_level[8]*Math.cos(Math.PI*(-1/2+8/5)),prev_band_level[8]*Math.sin(Math.PI*(-1/2+8/5)));
+	drawContext.lineTo(prev_band_level[9]*Math.cos(Math.PI*(-1/2+9/5)),prev_band_level[9]*Math.sin(Math.PI*(-1/2+9/5)));
 	drawContext.closePath();
 	
 	//color

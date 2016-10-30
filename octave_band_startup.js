@@ -8,7 +8,10 @@ function calc_octaveband(input_array) {
 	for (var i = 0; i < input_array.length; i++) {
 		fft_power[i] = Math.pow(10.0, input_array[i]/10.0);
 	}
-
+	
+	// @@@@ delete
+	consol.log(fft_power);
+	
 	var band_power = new Array(center_freqs.length);
 
 

@@ -135,7 +135,7 @@ function draw_octaveband() {
 			prev_band_level[i]=0.95*prev_band_level[i];
 			sound_level_env=prev_band_level[i];
 		}
-		
+		console.log(sound_level);
 		// 
 		// note that you can use "prev_band_level" array defined above to store the decaying level
 		// 

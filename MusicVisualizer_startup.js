@@ -216,6 +216,10 @@ function draw_MyOwn() {
 	drawContext.closePath();
 	
 	//color
+	var gradient = drawContext.createFadialGradient(X_CENTER,Y_CENTER,10,X_CENTER,Y_CENTER,200);
+	gradient.addColorStop(0,(251,237,42));
+	gradient.addColorStop(1,(214,31,59));
+	
 	drawContext.fillStyle = "white";
 	drawContext.fill();
 

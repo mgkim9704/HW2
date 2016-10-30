@@ -130,11 +130,13 @@ function draw_octaveband() {
 		//
 		// fill out here with your code
 		
-		if(octaveband_level_db[i]>prev_band_level[i])
+		if(sound_level>=prev_band_level[i]){
+			prev_band_level[i]=sound_level;
 			sound_level_env=sound_level;
+		}
 		else {
 			prev_band_level[i]=0.95*prev_band_level[i];
-			sound_level_env=(prev_band_level[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)*SOUND_METER_HEIGHT;
+			sound_level_env=prev_band_level[i];
 		}
 		
 		// 

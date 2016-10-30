@@ -221,7 +221,7 @@ function draw_MyOwn() {
 	
 	//color
 	drawContext.fillStyle = "white";
-	context.fill();
+	drawContext.fill();
 
 	
 	

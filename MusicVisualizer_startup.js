@@ -103,6 +103,9 @@ function draw_octaveband() {
 
 	var octaveband_level_db = calc_octaveband(data_array)
 
+	//@@@@@delete
+	consol.log(octaveband_level_db);
+	
 	// display the loudness value (this is for verifying if the level is correctly computed.)
 	var loudness = octaveband_level_db[0];
 	vis_value.innerHTML = '32Hz-Band Level (dB): ' + loudness + ' dB'

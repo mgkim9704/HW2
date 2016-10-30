@@ -132,7 +132,7 @@ function draw_octaveband() {
 			sound_level_env=sound_level;
 		}
 		else {
-			prev_band_level[i]=0.95*prev_band_level[i];
+			prev_band_level[i]=1.05*prev_band_level[i];
 			sound_level_env=(prev_band_level[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)*SOUND_METER_HEIGHT;
 		}
 		

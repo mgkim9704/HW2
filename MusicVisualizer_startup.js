@@ -107,9 +107,6 @@ function draw_octaveband() {
 	var loudness = octaveband_level_db[0];
 	vis_value.innerHTML = '32Hz-Band Level (dB): ' + loudness + ' dB'
 
-	//@@@
-	console.log(octaveband_level_db);
-	
 	
 	// 2d canvas context
 	var drawContext = vis_view.getContext('2d');
@@ -165,6 +162,65 @@ function draw_MyOwn() {
 	//
 	//
 	// fill out here with your code
+
+	var X_CENTER = WIDTH/2;
+	var Y_CENTER = HEIGHT/2;
+	var RADIUS = 240;	
+	
+	// get samples 
+	var data_array = new Float32Array(analyser.frequencyBinCount);
+	analyser.getFloatFrequencyData(data_array);
+
+	var octaveband_level_db = calc_octaveband(data_array)
+
+	// display the loudness value (this is for verifying if the level is correctly computed.)
+	var loudness = octaveband_level_db[0];
+	vis_value.innerHTML = '32Hz-Band Level (dB): ' + loudness + ' dB'
+	
+	// 2d canvas context
+	var drawContext = vis_view.getContext('2d');
+	
+	// fill rectangular (for the entire canvas)
+	drawContext.beginPath();
+	drawContext.fillStyle = 'rgb(0, 0, 0)';
+	drawContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+	
+	drawContext.beginPath();
+	for (var i=0; i<10; i++) {
+		
+		//get radius (for draw figure)
+		var sound_level = (octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)*RADIUS;
+		var sound_level_env;
+
+
+		///// asymmetric envelope detector
+		if(sound_level>=prev_band_level[i]){
+			prev_band_level[i]=sound_level;
+			sound_level_env=sound_level;
+		}
+		else {
+			prev_band_level[i]=0.95*prev_band_level[i];
+			sound_level_env=prev_band_level[i];
+		}
+
+		
+		//point for drawing figure
+		if(i==0){
+			drawContext.moveTo(RADIUS*Math.cos(-Math.PI/2),RADIUS*Math.sin(-Math.PI/2));
+		}
+		else {
+			drawContext.lineTo(RADIUS*Math.cos(Math.PI*(-1/2+i/5)),RADIUS*Math.sin(Math.PI*(-1/2+i/5)));
+		}
+	}
+	drawContext.closePath();
+	
+	//color
+	drawContext.fillStyle = "white"
+
+	
+	
+	
 	// 
 	// 
 	//

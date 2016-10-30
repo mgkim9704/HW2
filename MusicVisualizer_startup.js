@@ -170,8 +170,8 @@ function draw_MyOwn() {
 	var X_CENTER = WIDTH/2;
 	var Y_CENTER = HEIGHT/2;
 	var RADIUS = 240;	
-	var find_max_value = 0;
-	var max_band=0;
+	var find_min_value = 0;
+	var min_band=0;
 	
 	// get samples 
 	var data_array = new Float32Array(analyser.frequencyBinCount);
@@ -196,10 +196,10 @@ function draw_MyOwn() {
 	drawContext.beginPath();
 	for (var i=0; i<10; i++) {
 		
-		/////find max value
-		if((octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)>find_max_value){
-			find_max_value=(octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL);
-			max_band=i;
+		/////find min value
+		if((octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL)>find_min_value){
+			find_min_value=(octaveband_level_db[i]-SOUND_METER_MIN_LEVEL)/(0.0-SOUND_METER_MIN_LEVEL);
+			min_band=i;
 		}
 		
 		
@@ -229,15 +229,15 @@ function draw_MyOwn() {
 	drawContext.closePath();
 	
 	/////color
-	var gradient = drawContext.createRadialGradient(X_CENTER,Y_CENTER,70*find_max_value,X_CENTER,Y_CENTER,200);
+	var gradient = drawContext.createRadialGradient(X_CENTER,Y_CENTER,50*find_min_value,X_CENTER,Y_CENTER,200);
 	
-	var hue = Math.floor(255/9*max_band);
+	var hue = Math.floor(255/9*min_band);
 	var saturation = 255;
 	var value = 255;
 	var rgb = hsvToRgb(hue, saturation, value);
 	
-	gradient.addColorStop(0,'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')');
-	gradient.addColorStop(1,"black");
+	gradient.addColorStop(0,"black");
+	gradient.addColorStop(1,'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')');
 	
 	drawContext.fillStyle = gradient;
 	drawContext.fill();

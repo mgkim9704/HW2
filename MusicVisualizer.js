@@ -72,8 +72,8 @@ window.onload=function(){
     demoReq.open("Get","demo1.mp3",true);
     demoReq.responseType = "arraybuffer";
     demoReq.onload = function(){
-        context.decodeAudioData(demoReq.response, function(buffer){demo_buffer = buffer;}
-			       console.log(buffer););
+        context.decodeAudioData(demoReq.response, function(buffer){demo_buffer = buffer;
+								  console.log(buffer);});
     }
     demoReq.send();
 
